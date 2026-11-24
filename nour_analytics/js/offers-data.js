@@ -39,7 +39,7 @@ export const OFFERS = [
     durationMonths: 6,
     workMode: "remote",
     officeDays: 0,
-    remoteNote: "Fully remote, one team day in Rabat each month (travel paid)",
+    remoteNote: "Remote, with one required team day in Rabat every month (travel paid by Nour)",
     stipendMAD: 4000,
     perks: ["Laptop provided", "Monthly train ticket to Rabat for the team day"],
     preHire: "possible",

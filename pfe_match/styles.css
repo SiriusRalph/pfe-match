@@ -367,3 +367,58 @@ body > dialog button { margin-right: 8px; }
 #agent-app .ns-settings > summary { margin-top: 10px; font-weight: 500; font-size: 13px; color: var(--ink); cursor: pointer; }
 #agent-app .ns-settings-body button { border-radius: 8px; font-family: var(--font); }
 @media (max-width: 900px) { #agent-app .assistant-panels { grid-template-columns: 1fr; } }
+
+
+/* ---------- roomier layout (v2) ---------- */
+.content { padding: 32px clamp(20px, 3vw, 40px); max-width: 1440px; }
+.workspace { grid-template-columns: minmax(0, 1fr) 320px; gap: 22px; }
+.stats { gap: 16px; margin-bottom: 26px; }
+.panel { padding: 20px; }
+.agent-panel { padding: 20px 20px 14px; }
+
+/* agents strip sits above the chat instead of eating a column */
+#agent-app .assistant-panels { display: flex; flex-direction: column; grid-template-columns: none; }
+#agent-app [data-ns-slot="agents"] { order: -1; }
+#agent-app .ns-agents { display: flex; align-items: center; gap: 8px; flex-wrap: wrap; padding: 10px 14px; background: #FBFBFC; border-bottom: 1px solid var(--line); }
+#agent-app .ns-agents h3 { margin: 0 6px 0 0; white-space: nowrap; }
+#agent-app #ns-anodes { display: flex; flex-wrap: wrap; gap: 6px; }
+#agent-app .ns-status { order: 9; font-size: 12px; margin: 0 0 0 auto; }
+#agent-app .ns-anode { display: inline-flex; align-items: center; gap: 6px; padding: 3px 10px 3px 6px; margin: 0; border-radius: 999px; max-width: 240px; }
+#agent-app .ns-aicon { font-size: 13px; }
+#agent-app .ns-aname { font-size: 12px; font-weight: 600; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; max-width: 170px; }
+#agent-app .ns-arole { display: none; }
+#agent-app .ns-chat { border-right: 0; }
+#agent-app.ns-composed-app [data-ns-slot="chat"] { height: 640px; }
+
+/* messages: let answers with tables use the full width, and scroll sideways if needed */
+#agent-app .ns-msgs { padding: 20px 22px; gap: 14px; }
+#agent-app .ns-msg.bot { max-width: 100%; }
+#agent-app .ns-msg.user { max-width: 75%; }
+#agent-app .ns-msg.bot table { display: block; overflow-x: auto; width: 100%; max-width: 100%; }
+#agent-app .ns-msg.bot td, #agent-app .ns-msg.bot th { min-width: 90px; vertical-align: top; }
+#agent-app .ns-msg.bot td:first-child, #agent-app .ns-msg.bot th:first-child { min-width: 110px; font-weight: 500; }
+
+/* question chips: one tidy row that scrolls instead of stacking */
+.atlas-suggest { flex-wrap: nowrap; overflow-x: auto; padding: 12px 16px 2px; scrollbar-width: none; mask-image: linear-gradient(90deg, #000 92%, transparent); -webkit-mask-image: linear-gradient(90deg, #000 92%, transparent); }
+.atlas-suggest::-webkit-scrollbar { display: none; }
+.atlas-suggest button { flex: none; white-space: nowrap; }
+
+/* compact sidebar on laptop screens: icons only */
+@media (max-width: 1440px) and (min-width: 821px) {
+  .shell { grid-template-columns: 72px minmax(0, 1fr); }
+  .side { padding: 18px 12px; align-items: center; }
+  .side .lbl, .side-card, .side-user div { display: none; }
+  .logo { padding: 0; }
+  .side-nav a { position: relative; justify-content: center; width: 44px; height: 44px; padding: 0; }
+  .side-nav svg { width: 20px; height: 20px; }
+  .badge { position: absolute; top: 4px; right: 2px; min-width: 16px; padding: 0 4px; font-size: 10px; line-height: 15px; background: var(--violet); color: #fff; box-shadow: none; }
+  .side-user { margin-top: auto; border-top: 0; padding: 0; }
+  .side-nav a::after { content: attr(data-label); position: absolute; left: 54px; top: 50%; transform: translateY(-50%); white-space: nowrap; background: var(--ink); color: #fff; font-size: 12px; padding: 4px 8px; border-radius: 6px; opacity: 0; pointer-events: none; transition: opacity .15s; }
+  .side-nav a:hover::after { opacity: 1; }
+}
+@media (max-width: 1100px) { .workspace { grid-template-columns: 1fr; } }
+#agent-app .ns-agents { justify-content: flex-start; text-align: left; flex-wrap: nowrap; overflow-x: auto; }
+#agent-app .ns-agents h3 { width: auto; flex: none; text-align: left; }
+#agent-app #ns-anodes { flex-wrap: nowrap; }
+#agent-app .ns-aaddr { display: none; }
+#agent-app .ns-anode { flex: none; }
