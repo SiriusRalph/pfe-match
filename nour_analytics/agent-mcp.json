@@ -1,0 +1,7 @@
+{
+  "protocol": "nsdeploy-agent-mcp/v1",
+  "network": "nour_analytics_pfe",
+  "front_man": "nour_analytics_pfe_assistant",
+  "available": false,
+  "reason": "This is a static bundle; a public MCP facade requires an application host."
+}

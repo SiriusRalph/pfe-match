@@ -1,0 +1,206 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="PFE 2027 internships at Atlas Data, a data and AI consultancy in Casablanca Finance City. Subjects, stipends, format, hiring plans and how to apply.">
+  <title>PFE 2027 · Careers · Atlas Data</title>
+  <link rel="icon" href="favicon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="styles.css">
+  <script type="module" src="js/app.js"></script>
+  <script type="module" src="site.js"></script>
+  <script type="module" src="js/motion.js"></script>
+</head>
+<body>
+  <header class="site-header">
+    <div class="wrap header-inner">
+      <a class="brand" href="#top" aria-label="Atlas Data home">
+        <img src="favicon.svg" alt="" width="34" height="34">
+        <span><strong>Atlas Data</strong><small>Data &amp; AI consultancy</small></span>
+      </a>
+      <nav aria-label="Main">
+        <a href="#top" class="active">Home</a>
+        <a href="#subjects">PFE subjects</a>
+        <a href="#assistant">Ask Atlas</a>
+        <a href="#mentors">Mentors</a>
+        <a href="#how">How we recruit</a>
+      </nav>
+      <a href="#apply" class="btn btn-sm">Apply now</a>
+    </div>
+  </header>
+
+  <main id="top">
+    <!-- HERO -->
+    <section class="hero">
+      <div class="wrap hero-grid">
+        <div class="hero-text">
+          <p class="kicker"><span class="dot"></span> PFE 2027 · Casablanca Finance City</p>
+          <h1>Your final-year internship, on <span class="hl">real client data</span>.</h1>
+          <p class="lede">Atlas Data is a team of 42 data engineers, analysts and AI specialists.
+            Every year we welcome a few final-year students on real projects, each with a mentor who has time for them.</p>
+          <div class="hero-cta">
+            <a href="#subjects" class="btn">Compare the subjects</a>
+            <a href="#assistant" class="btn btn-ghost">Ask our assistant</a>
+          </div>
+          <ul class="stats">
+            <li><strong>3</strong><span>PFE subjects</span></li>
+            <li><strong>Feb–Mar</strong><span>start dates</span></li>
+            <li><strong id="deadline">—</strong><span>apply by</span></li>
+          </ul>
+        </div>
+
+        <div class="hero-art" aria-hidden="true">
+          <div class="art-panel">
+            <div class="dash">
+              <div class="dash-top"><span></span><span></span><span></span></div>
+              <p class="dash-title">Weekly sales · lakehouse</p>
+              <div class="bars"><i style="--h:38%"></i><i style="--h:55%"></i><i style="--h:47%"></i><i style="--h:72%"></i><i style="--h:64%"></i><i style="--h:88%"></i><i style="--h:79%"></i></div>
+              <div class="dash-rows"><b></b><b></b><b class="short"></b></div>
+            </div>
+          </div>
+          <div class="float f1"><span class="ic ic-green">✓</span><div><small>Stipend</small><strong>3 000 MAD / month</strong></div></div>
+          <div class="float f2"><span class="ic ic-sand">⌂</span><div><small>Format</small><strong>Hybrid · 3 days office</strong></div></div>
+          <div class="float f3"><span class="avatar a1">YE</span><div><small>Your mentor</small><strong>Yasmine, Lead Data Eng.</strong></div></div>
+          <div class="float f4"><span class="tag-saffron">Pre-hire track</span></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- PROMISES -->
+    <section class="section">
+      <div class="wrap">
+        <div class="split-head">
+          <h2>What every Atlas PFE<br>comes with</h2>
+          <p>No guessing, no awkward questions. We write the stipend, the format and our hiring plans on every offer,
+            so you can decide before you apply.</p>
+        </div>
+        <div class="promises">
+          <article><span class="pi">◎</span><h3>A real client project</h3><p>Your work ships to a client. No side tasks, no "make us a presentation".</p></article>
+          <article><span class="pi">☺</span><h3>A named mentor</h3><p>One senior person, one hour a week in your calendar, from day one.</p></article>
+          <article><span class="pi">≡</span><h3>Clear conditions</h3><p>Stipend, office days and dates are on the offer, not revealed in week three.</p></article>
+          <article><span class="pi">↗</span><h3>An honest next step</h3><p>We tell you up front which teams plan to hire after the PFE.</p></article>
+        </div>
+      </div>
+    </section>
+
+    <!-- SUBJECTS: comparison board, then the full offers -->
+    <section id="subjects" class="section tint">
+      <div class="wrap">
+        <div class="section-head">
+          <div>
+            <p class="eyebrow">Open for 2027</p>
+            <h2>Compare the PFE subjects</h2>
+          </div>
+          <p id="offer-count" class="count" aria-live="polite"></p>
+        </div>
+
+        <div class="board">
+          <form class="filters" aria-label="What you need from your PFE" onsubmit="return false">
+            <span class="needs-q" id="needs-q">What do you need?</span>
+            <label class="pill"><input type="checkbox" id="f-paid"><span>A stipend</span></label>
+            <label class="pill"><input type="checkbox" id="f-hybrid"><span>Some days from home</span></label>
+            <label class="pill"><input type="checkbox" id="f-feb"><span>A February start</span></label>
+            <label class="pill"><input type="checkbox" id="f-prehire"><span>A chance to be hired</span></label>
+          </form>
+          <div id="offer-matrix" class="compare"></div>
+        </div>
+
+        <h3 class="list-title">The full offers</h3>
+        <div id="offer-list" class="offer-grid"></div>
+        <noscript><p>Please turn on JavaScript to see our subjects, or write to pfe@atlasdata.example.</p></noscript>
+      </div>
+    </section>
+
+    <!-- ASSISTANT -->
+    <section id="assistant" class="section assistant-wrap" aria-labelledby="assistant-heading">
+      <div class="wrap">
+        <div class="split-head">
+          <div>
+            <p class="eyebrow">New · Careers assistant</p>
+            <h2 id="assistant-heading">Ask Atlas anything about our PFEs</h2>
+          </div>
+          <p>Is it paid? Hybrid? Is hiring planned after? Ask our assistant: it answers from the offers on this page, and can send your application for you.</p>
+        </div>
+        <div class="assistant">
+          <p class="assistant-note">Your messages and this page's data go to the AI provider you choose in the settings below, with your own key. You confirm before any application is sent.</p>
+          <p id="assistant-status" role="status">Connecting the assistant… If this message stays, the assistant could not load. You can still use the page directly.</p>
+          <div id="agent-app">
+            <div data-ns-slot="header"></div>
+            <div class="assistant-panels">
+              <div data-ns-slot="chat"></div>
+              <div data-ns-slot="agents"></div>
+            </div>
+            <div data-ns-slot="settings"></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- MENTORS -->
+    <section id="mentors" class="section">
+      <div class="wrap">
+        <div class="split-head">
+          <h2>Meet your mentors</h2>
+          <p>Each subject has one mentor. You'll meet them in the second interview, before you say yes.</p>
+        </div>
+        <div class="mentors">
+          <article><span class="avatar big a1">YE</span><h3>Yasmine El Idrissi</h3><p class="role">Lead Data Engineer</p><p>Mentors the <strong>Lakehouse pipelines</strong> subject. Ex-intern, hired in 2021.</p></article>
+          <article><span class="avatar big a2">KB</span><h3>Karim Benjelloun</h3><p class="role">Head of AI Lab</p><p>Mentors the <strong>RAG assistant</strong> subject. Loves a good evaluation set.</p></article>
+          <article><span class="avatar big a3">ST</span><h3>Salma Tazi</h3><p class="role">Analytics Manager</p><p>Mentors the <strong>Executive dashboards</strong> subject. Clear charts or nothing.</p></article>
+        </div>
+      </div>
+    </section>
+
+    <!-- PROCESS -->
+    <section id="how" class="section dark">
+      <div class="wrap">
+        <p class="eyebrow light">Four steps, about three weeks</p>
+        <h2>How we recruit</h2>
+        <ol id="process" class="timeline"></ol>
+        <p class="note-light">We answer every application, <span id="response-time"></span>.</p>
+      </div>
+    </section>
+
+    <!-- APPLY -->
+    <section id="apply" class="section">
+      <div class="wrap apply-grid">
+        <div>
+          <p class="eyebrow">One form per subject</p>
+          <h2>Apply</h2>
+          <p class="muted">Tell us in a few lines why this subject. Not your whole life story.</p>
+          <ul class="contact">
+            <li><span class="ci">⌖</span><div><small>Office</small>Tour CFC, Casablanca Finance City</div></li>
+            <li><span class="ci">@</span><div><small>Questions</small>pfe@atlasdata.example</div></li>
+            <li><span class="ci">◷</span><div><small>Answer within</small>10 working days</div></li>
+          </ul>
+        </div>
+        <form id="apply-form" novalidate>
+          <label>Subject<select id="apply-offer" required></select></label>
+          <div class="row">
+            <label>Full name<input id="apply-name" autocomplete="name" required></label>
+            <label>Email<input id="apply-email" type="email" autocomplete="email" required></label>
+          </div>
+          <label>School<input id="apply-school" required></label>
+          <label><span>Why this subject? <span class="opt">(optional)</span></span><textarea id="apply-message" rows="4" maxlength="1000"></textarea></label>
+          <button class="btn" type="submit">Send application</button>
+          <p id="apply-result" class="result" role="status" hidden></p>
+        </form>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="wrap footer-grid">
+      <div>
+        <a class="brand light" href="#top"><img src="favicon.svg" alt="" width="34" height="34"><span><strong>Atlas Data</strong><small>Data &amp; AI consultancy</small></span></a>
+        <p>Data platforms, analytics and applied AI for companies in Morocco and West Africa.</p>
+      </div>
+      <div><h4>Careers</h4><a href="#subjects">PFE subjects</a><a href="#assistant">Ask Atlas</a><a href="#mentors">Mentors</a><a href="#how">How we recruit</a></div>
+      <div><h4>Contact</h4><p>Tour CFC, Casablanca Finance City</p><p>pfe@atlasdata.example</p></div>
+    </div>
+    <div class="wrap demo">Atlas Data is a fictional company built as a demo for the Open Agentic Web Challenge.
+      Applications stay in this page until you refresh it and are never sent to Atlas Data.
+      The assistant sends your messages and this page's data only to the AI provider you choose.</div>
+  </footer>
+</body>
+</html>

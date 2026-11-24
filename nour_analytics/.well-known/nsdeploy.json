@@ -1,0 +1,18 @@
+{
+  "protocol": "nsdeploy-link/v1",
+  "exports": [
+    {
+      "network": "nour_analytics_pfe",
+      "front_man": "nour_analytics_pfe_assistant",
+      "aliases": [
+        "nour_analytics_pfe",
+        "nour_analytics_pfe_assistant"
+      ],
+      "url": "nour_analytics_pfe"
+    }
+  ],
+  "imports": [],
+  "link_updates": {
+    "mode": "browser-local"
+  }
+}

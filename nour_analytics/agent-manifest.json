@@ -1,0 +1,80 @@
+{
+  "brand": "Nour Analytics Careers Assistant",
+  "networks": [
+    {
+      "name": "nour_analytics_pfe",
+      "front_man": "nour_analytics_pfe_assistant",
+      "hocon": "./nour_analytics_pfe.network.json",
+      "description": "Ask about Nour Analytics' PFE 2027 subjects: stipend, remote or hybrid, start dates, pre-hire, skills, and apply.",
+      "tags": [
+        "agentified-website",
+        "careers",
+        "internships",
+        "pfe"
+      ],
+      "sample_queries": [
+        "Can I do my PFE from home?",
+        "Is hiring planned after the MLOps internship?",
+        "I'd like to apply to the Machine Learning Engineer PFE.",
+        "Which subjects start in February and pay at least 3 000 MAD?",
+        "Can you schedule my interview for next Monday?"
+      ]
+    }
+  ],
+  "llm_router": {
+    "base_url": "https://eu.api.otari.ai/api/v1",
+    "mock": false,
+    "byok_router": "https://eu.api.otari.ai/api/v1"
+  },
+  "allowed_peers": [],
+  "peer_policy": {
+    "mode": "closed",
+    "deny_origins": [],
+    "note": "Local agents and page-local actions only."
+  },
+  "agent_mcp": {
+    "protocol": "nsdeploy-agent-mcp/v1",
+    "network": "nour_analytics_pfe",
+    "front_man": "nour_analytics_pfe_assistant",
+    "available": false,
+    "reason": "This is a static bundle; a public MCP facade requires an application host."
+  },
+  "theme": {
+    "primary": "#2B3A8C"
+  },
+  "linking": {
+    "protocol": "nsdeploy-link/v1",
+    "exports": [
+      {
+        "network": "nour_analytics_pfe",
+        "front_man": "nour_analytics_pfe_assistant",
+        "aliases": [
+          "nour_analytics_pfe",
+          "nour_analytics_pfe_assistant"
+        ],
+        "url": "nour_analytics_pfe"
+      }
+    ],
+    "imports": [],
+    "link_updates": {
+      "mode": "browser-local"
+    }
+  },
+  "deployment": {
+    "mode": "static",
+    "self_contained_runtime": true,
+    "browser_mock": false,
+    "direct_byok": true,
+    "direct_mcp_requires_cors": true,
+    "public_mcp_facade": false
+  },
+  "actions": {
+    "version": 1,
+    "module": "./site-actions.js",
+    "bridge": "./bridge/action-bridge.html",
+    "agentTools": [
+      "get_pfe_offers",
+      "submit_application"
+    ]
+  }
+}

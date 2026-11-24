@@ -1,0 +1,18 @@
+{
+  "protocol": "nsdeploy-link/v1",
+  "exports": [
+    {
+      "network": "pfe_match",
+      "front_man": "pfe_match_assistant",
+      "aliases": [
+        "pfe_match",
+        "pfe_match_assistant"
+      ],
+      "url": "pfe_match"
+    }
+  ],
+  "imports": [],
+  "link_updates": {
+    "mode": "browser-local"
+  }
+}

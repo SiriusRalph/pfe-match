@@ -1,0 +1,199 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="PFE Match: your own internship agent. It asks each company's own agent about stipend, remote work, start dates and hiring, and compares the answers with what you need.">
+  <title>PFE Match · My agent</title>
+  <link rel="icon" href="favicon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="styles.css">
+  <script type="module" src="js/app.js"></script>
+  <script type="module" src="site.js"></script>
+</head>
+<body>
+  <div class="shell">
+    <!-- SIDEBAR -->
+    <aside class="side" aria-label="PFE Match">
+      <a class="logo" href="#top" aria-label="PFE Match home"><img src="favicon.svg" alt="" width="30" height="30"><span>PFE Match</span></a>
+      <nav class="side-nav" aria-label="Main">
+        <a href="#agent" class="active">
+          <svg viewBox="0 0 24 24"><path d="M12 3l1.9 4.6L18.5 9.5l-4.6 1.9L12 16l-1.9-4.6L5.5 9.5l4.6-1.9z"/><path d="M19 15l.8 2 2 .8-2 .8-.8 2-.8-2-2-.8 2-.8z"/></svg>My agent</a>
+        <a href="#shortlist">
+          <svg viewBox="0 0 24 24"><path d="M6 3h12v18l-6-4-6 4z"/></svg>Shortlist<span class="badge" id="nav-count">0</span></a>
+        <a href="#companies">
+          <svg viewBox="0 0 24 24"><path d="M3 21h18M5 21V7l7-4 7 4v14M9 21v-6h6v6"/></svg>Companies</a>
+        <a href="#how">
+          <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M9.5 9a2.5 2.5 0 1 1 3.5 2.3c-.6.3-1 .9-1 1.6V14M12 17.5v.01"/></svg>How it works</a>
+      </nav>
+
+      <div class="side-card">
+        <p class="side-card-title"><span class="live"></span>Open agentic web</p>
+        <p>Your agent talks to each company's own agent, on its own website. No platform in the middle.</p>
+      </div>
+
+      <div class="side-user">
+        <span class="avatar" id="me-initial">S</span>
+        <div><strong id="me-name">Sara</strong><small id="me-school"></small></div>
+      </div>
+    </aside>
+
+    <!-- MAIN -->
+    <div class="main" id="top">
+      <header class="topbar">
+        <div class="crumbs"><span>Workspace</span><span class="sep">/</span><strong>My agent</strong></div>
+        <div class="top-actions">
+          <span class="chip-demo">Demo</span>
+          <button type="button" class="icon-btn" aria-label="Notifications"><svg viewBox="0 0 24 24"><path d="M6 8a6 6 0 1 1 12 0c0 7 3 8 3 8H3s3-1 3-8M10 20a2 2 0 0 0 4 0"/></svg></button>
+          <span class="avatar sm" aria-hidden="true">S</span>
+        </div>
+      </header>
+
+      <main class="content">
+        <div class="greet">
+          <div>
+            <h1 id="greet-h">Good morning, Sara</h1>
+            <p>Your agent asks companies' own agents about pay, format, dates and hiring, and keeps what fits you.</p>
+          </div>
+          <a class="btn" href="#agent" id="new-search">Find PFEs for me</a>
+        </div>
+
+        <ul class="stats" aria-label="Overview">
+          <li><span class="stat-label">Companies connected</span><strong id="st-companies">2</strong><span class="stat-sub">each with its own PFE agent</span></li>
+          <li><span class="stat-label">Saved offers</span><strong id="st-saved">0</strong><span class="stat-sub" id="st-applied">0 applied</span></li>
+          <li><span class="stat-label">Best match</span><strong id="st-best">—</strong><span class="stat-sub" id="st-best-sub">save an offer to see it</span></li>
+          <li><span class="stat-label">Next deadline</span><strong id="st-deadline">—</strong><span class="stat-sub" id="st-deadline-sub"></span></li>
+        </ul>
+
+        <div class="workspace">
+          <!-- AGENT -->
+          <section id="agent" class="panel agent-panel" aria-labelledby="agent-h">
+            <div class="panel-head">
+              <h2 id="agent-h">My agent</h2>
+              <p class="panel-sub">Works for you, not for the companies. You approve every company it contacts.</p>
+            </div>
+            <div class="assistant">
+              <p id="assistant-status" role="status">Connecting your agent… If this message stays, the agent could not load. You can still visit the companies directly.</p>
+              <div id="agent-app">
+                <div data-ns-slot="header"></div>
+                <div class="assistant-panels">
+                  <div data-ns-slot="chat"></div>
+                  <div data-ns-slot="agents"></div>
+                </div>
+                <div data-ns-slot="settings"></div>
+              </div>
+              <p class="assistant-note">Your messages, needs and the companies' answers go to the AI provider you choose in the settings, with your own key. Companies get only short questions, never your name or email.</p>
+            </div>
+          </section>
+
+          <!-- RIGHT COLUMN -->
+          <div class="rail">
+            <section class="panel" aria-labelledby="needs-h">
+              <div class="panel-head row">
+                <h2 id="needs-h">What I need</h2>
+                <span class="saved-hint">Saved</span>
+              </div>
+              <form id="needs-form" onsubmit="return false">
+                <div class="line">
+                  <label class="switch"><input type="checkbox" id="n-paid"><span class="track"></span><span>A stipend</span></label>
+                </div>
+                <label class="range" id="n-min-wrap"><span class="line-label">Minimum <output id="n-min-out">2 500</output> MAD / month</span>
+                  <input type="range" id="n-min" min="0" max="6000" step="500"></label>
+                <fieldset>
+                  <legend class="line-label">Where I can work</legend>
+                  <div class="seg">
+                    <label><input type="checkbox" name="mode" value="on-site"><span>On-site</span></label>
+                    <label><input type="checkbox" name="mode" value="hybrid"><span>Hybrid</span></label>
+                    <label><input type="checkbox" name="mode" value="remote"><span>Remote</span></label>
+                  </div>
+                </fieldset>
+                <div class="two">
+                  <label class="field"><span class="line-label">Start by</span>
+                    <select id="n-start">
+                      <option value="2027-02-28">End of Feb 2027</option>
+                      <option value="2027-03-31">End of Mar 2027</option>
+                      <option value="">Any date</option>
+                    </select></label>
+                  <label class="field"><span class="line-label">Job after</span>
+                    <select id="n-prehire">
+                      <option value="must">I need it</option>
+                      <option value="would-like">I'd like it</option>
+                      <option value="dont-mind">Don't mind</option>
+                    </select></label>
+                </div>
+              </form>
+              <div class="profile-mini">
+                <span id="p-from"></span><span class="dot-sep"></span><span id="p-length"></span>
+              </div>
+              <p class="chips" id="p-skills"></p>
+            </section>
+
+            <section class="panel" aria-labelledby="net-h">
+              <div class="panel-head row">
+                <h2 id="net-h">Connected companies</h2>
+                <span class="online"><span class="live"></span>Online</span>
+              </div>
+              <svg class="net" viewBox="0 0 300 150" aria-hidden="true" focusable="false">
+                <path id="qa" class="link" d="M150 110 C 120 80, 90 60, 60 45"/>
+                <path id="qn" class="link" d="M150 110 C 180 80, 210 60, 240 45"/>
+                <path id="ra" d="M60 45 C 90 60, 120 80, 150 110" fill="none"/>
+                <path id="rn" d="M240 45 C 210 60, 180 80, 150 110" fill="none"/>
+                <circle class="pkt q" r="5" opacity="0"><animateMotion dur="2.6s" repeatCount="indefinite"><mpath href="#qa"/></animateMotion><animate attributeName="opacity" values="0;1;1;0" dur="2.6s" repeatCount="indefinite"/></circle>
+                <circle class="pkt q" r="5" opacity="0"><animateMotion dur="2.6s" begin=".9s" repeatCount="indefinite"><mpath href="#qn"/></animateMotion><animate attributeName="opacity" values="0;1;1;0" dur="2.6s" begin=".9s" repeatCount="indefinite"/></circle>
+                <circle class="pkt a" r="5" opacity="0"><animateMotion dur="2.6s" begin="1.4s" repeatCount="indefinite"><mpath href="#ra"/></animateMotion><animate attributeName="opacity" values="0;1;1;0" dur="2.6s" begin="1.4s" repeatCount="indefinite"/></circle>
+                <circle class="pkt a" r="5" opacity="0"><animateMotion dur="2.6s" begin="2.2s" repeatCount="indefinite"><mpath href="#rn"/></animateMotion><animate attributeName="opacity" values="0;1;1;0" dur="2.6s" begin="2.2s" repeatCount="indefinite"/></circle>
+                <g transform="translate(60 45)"><circle r="20" class="n-atlas"/><text y="4">A</text></g>
+                <g transform="translate(240 45)"><circle r="20" class="n-nour"/><text y="4">N</text></g>
+                <g transform="translate(150 110)"><circle r="24" class="n-you"/><text y="5">You</text></g>
+              </svg>
+              <ul id="company-list" class="co-list"></ul>
+            </section>
+
+            <section class="panel" aria-labelledby="dl-h">
+              <div class="panel-head"><h2 id="dl-h">Deadlines</h2></div>
+              <ul id="deadline-list" class="dl-list"></ul>
+            </section>
+          </div>
+        </div>
+
+        <!-- SHORTLIST BOARD -->
+        <section id="shortlist" class="board-wrap" aria-labelledby="short-h">
+          <div class="section-head">
+            <div><h2 id="short-h">Shortlist</h2><p>Offers your agent saved for you, with the needs each one meets.</p></div>
+            <p id="short-count" class="count"></p>
+          </div>
+          <div class="board">
+            <div class="col">
+              <div class="col-head"><span class="col-dot saved"></span>Saved <span class="col-n" id="n-saved">0</span></div>
+              <div id="short-list" class="col-body"></div>
+            </div>
+            <div class="col">
+              <div class="col-head"><span class="col-dot applied"></span>Applied <span class="col-n" id="n-applied">0</span></div>
+              <div id="applied-list" class="col-body"></div>
+            </div>
+          </div>
+        </section>
+
+        <!-- COMPANIES + HOW -->
+        <section id="companies" class="board-wrap" aria-labelledby="co-h">
+          <div class="section-head"><div><h2 id="co-h">Companies with a PFE agent</h2><p>Each company runs its own agent on its own careers site. Any company can join for free.</p></div></div>
+          <div id="company-cards" class="co-cards"></div>
+        </section>
+
+        <section id="how" class="board-wrap" aria-labelledby="how-h">
+          <div class="section-head"><div><h2 id="how-h">How it works</h2></div></div>
+          <ol class="steps">
+            <li><strong>Tell your agent what you need</strong><span>Change your needs on the right, or just say it in the chat.</span></li>
+            <li><strong>It asks each company's agent</strong><span>You approve each company on a card. It sends a short question, never your name or email.</span></li>
+            <li><strong>Compare, save, apply</strong><span>It compares the answers with your needs and saves the best ones. You apply on the company's own site.</span></li>
+          </ol>
+        </section>
+
+        <footer class="foot">
+          <p><strong>PFE Match</strong> is a demo for the Open Agentic Web Challenge. Atlas Data and Nour Analytics are fictional companies.
+            Your profile and shortlist stay in this browser. <button type="button" id="reset-demo" class="linkish">Reset the demo</button></p>
+        </footer>
+      </main>
+    </div>
+  </div>
+</body>
+</html>

@@ -1,0 +1,86 @@
+{
+  "brand": "PFE Match agent",
+  "networks": [
+    {
+      "name": "pfe_match",
+      "front_man": "pfe_match_assistant",
+      "hocon": "./pfe_match.network.json",
+      "description": "Your own internship agent: it asks each company's PFE agent and compares the answers with your needs.",
+      "tags": [
+        "agentified-website",
+        "students",
+        "internships",
+        "pfe",
+        "discovery"
+      ],
+      "sample_queries": [
+        "Find PFEs that match my needs",
+        "Which company lets me work from home?",
+        "Save the best match to my shortlist",
+        "I only need a paid PFE starting in February",
+        "Apply for me to Atlas Data"
+      ]
+    }
+  ],
+  "llm_router": {
+    "base_url": "https://eu.api.otari.ai/api/v1",
+    "mock": false,
+    "byok_router": "https://eu.api.otari.ai/api/v1"
+  },
+  "allowed_peers": [
+    "http://localhost:8081",
+    "http://[::1]:8082"
+  ],
+  "peer_policy": {
+    "mode": "closed",
+    "deny_origins": [],
+    "note": "Calls the company sites in allowed_peers (their PFE agents) after the student agrees on a card."
+  },
+  "agent_mcp": {
+    "protocol": "nsdeploy-agent-mcp/v1",
+    "network": "pfe_match",
+    "front_man": "pfe_match_assistant",
+    "available": false,
+    "reason": "This is a static bundle; a public MCP facade requires an application host."
+  },
+  "theme": {
+    "primary": "#6D4AFF"
+  },
+  "linking": {
+    "protocol": "nsdeploy-link/v1",
+    "exports": [
+      {
+        "network": "pfe_match",
+        "front_man": "pfe_match_assistant",
+        "aliases": [
+          "pfe_match",
+          "pfe_match_assistant"
+        ],
+        "url": "pfe_match"
+      }
+    ],
+    "imports": [],
+    "link_updates": {
+      "mode": "browser-local"
+    }
+  },
+  "deployment": {
+    "mode": "static",
+    "self_contained_runtime": true,
+    "browser_mock": false,
+    "direct_byok": true,
+    "direct_mcp_requires_cors": true,
+    "public_mcp_facade": false
+  },
+  "actions": {
+    "version": 1,
+    "module": "./site-actions.js",
+    "agentTools": [
+      "get_my_profile",
+      "update_my_needs",
+      "save_to_shortlist",
+      "remove_from_shortlist"
+    ],
+    "bridge": "./bridge/action-bridge.html"
+  }
+}

@@ -1,0 +1,11 @@
+{
+  "networks": [
+    {
+      "name": "nour_analytics_pfe"
+    }
+  ],
+  "actions": {
+    "version": 1,
+    "module": "./bridge-actions.js"
+  }
+}

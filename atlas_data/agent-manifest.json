@@ -1,0 +1,67 @@
+{
+  "brand": "Atlas Data Careers Assistant",
+  "networks": [
+    {
+      "name": "atlas_data_pfe",
+      "front_man": "atlas_data_pfe_assistant",
+      "hocon": "./atlas_data_pfe.network.json",
+      "description": "Ask about Atlas Data's PFE 2027 subjects: stipend, hybrid or on-site, start dates, pre-hire, skills, and apply.",
+      "tags": ["agentified-website", "careers", "internships", "pfe"],
+      "sample_queries": [
+        "Which of your PFE subjects are paid and hybrid?",
+        "Is there a chance of being hired after the GenAI internship?",
+        "I'd like to apply to the Data Engineer PFE.",
+        "Can I do my PFE fully remote from Rabat?",
+        "Can you schedule my interview for next Monday?"
+      ]
+    }
+  ],
+  "llm_router": {
+    "base_url": "https://eu.api.otari.ai/api/v1",
+    "mock": false,
+    "byok_router": "https://eu.api.otari.ai/api/v1"
+  },
+  "allowed_peers": [],
+  "peer_policy": {
+    "mode": "closed",
+    "deny_origins": [],
+    "note": "Local agents and page-local actions only."
+  },
+  "agent_mcp": {
+    "protocol": "nsdeploy-agent-mcp/v1",
+    "network": "atlas_data_pfe",
+    "front_man": "atlas_data_pfe_assistant",
+    "available": false,
+    "reason": "This is a static bundle; a public MCP facade requires an application host."
+  },
+  "theme": {
+    "primary": "#087A54"
+  },
+  "linking": {
+    "protocol": "nsdeploy-link/v1",
+    "exports": [
+      {
+        "network": "atlas_data_pfe",
+        "front_man": "atlas_data_pfe_assistant",
+        "aliases": ["atlas_data_pfe", "atlas_data_pfe_assistant"],
+        "url": "atlas_data_pfe"
+      }
+    ],
+    "imports": [],
+    "link_updates": { "mode": "browser-local" }
+  },
+  "deployment": {
+    "mode": "static",
+    "self_contained_runtime": true,
+    "browser_mock": false,
+    "direct_byok": true,
+    "direct_mcp_requires_cors": true,
+    "public_mcp_facade": false
+  },
+  "actions": {
+    "version": 1,
+    "module": "./site-actions.js",
+    "bridge": "./bridge/action-bridge.html",
+    "agentTools": ["get_pfe_offers", "submit_application"]
+  }
+}

@@ -1,0 +1,18 @@
+{
+  "protocol": "nsdeploy-link/v1",
+  "exports": [
+    {
+      "network": "atlas_data_pfe",
+      "front_man": "atlas_data_pfe_assistant",
+      "aliases": [
+        "atlas_data_pfe",
+        "atlas_data_pfe_assistant"
+      ],
+      "url": "atlas_data_pfe"
+    }
+  ],
+  "imports": [],
+  "link_updates": {
+    "mode": "browser-local"
+  }
+}
