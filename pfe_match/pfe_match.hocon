@@ -24,8 +24,8 @@
     },
 
     "link_labels": {
-        "http://localhost:8081/atlas_data_pfe": "Atlas Data careers agent",
-        "http://[::1]:8082/nour_analytics_pfe": "Nour Analytics careers agent"
+        "https://atlas-data-pfe.netlify.app/atlas_data_pfe": "Atlas Data careers agent",
+        "https://nour-analytics-pfe.netlify.app/nour_analytics_pfe": "Nour Analytics careers agent"
     },
 
     "commondefs": {
@@ -101,8 +101,8 @@ How to work:
 {cruse_rules}
 """,
             "tools": [
-                "http://localhost:8081/atlas_data_pfe",
-                "http://[::1]:8082/nour_analytics_pfe"
+                "https://atlas-data-pfe.netlify.app/atlas_data_pfe",
+                "https://nour-analytics-pfe.netlify.app/nour_analytics_pfe"
             ]
         }
     ]

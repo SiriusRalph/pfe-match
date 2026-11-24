@@ -12,9 +12,12 @@ sites, asks the company agents directly, and compares the answers with the stude
 
 | Site | What it is | Live |
 |---|---|---|
-| `pfe_match/` | The student's own agent: needs, agent chat, shortlist board | GitHub Pages |
-| `atlas_data/` | Fictional data & AI consultancy (Casablanca) with its own careers agent | Netlify |
-| `nour_analytics/` | Fictional ML company (Rabat) with its own careers agent | Netlify |
+| `pfe_match/` | The student's own agent: needs, agent chat, shortlist board | https://siriusralph.github.io/pfe-match/ |
+| `atlas_data/` | Fictional data & AI consultancy (Casablanca) with its own careers agent | https://atlas-data-pfe.netlify.app/ |
+| `nour_analytics/` | Fictional ML company (Rabat) with its own careers agent | https://nour-analytics-pfe.netlify.app/ |
+
+**Try it:** open PFE Match, add your LLM key in the chat's **AI model settings**, press
+"Find PFEs that match my needs" and allow each company on its card.
 
 ## How it works
 1. The student sets their needs (stipend, work mode, latest start, hiring after).
@@ -34,7 +37,7 @@ python serve.py nour_analytics 8082 ::1
 python serve.py pfe_match 8080 127.0.0.1
 ```
 Open http://127.0.0.1:8080/ and add your LLM key in **AI model settings**.
-(The local URLs need the localhost versions of the partner addresses; see `pfe_match/README.md`.)
+(Locally, PFE Match needs the localhost partner addresses; see `pfe_match/README.md`.)
 
 ## Reusable piece: a PFE agent for any company
 `atlas_data/` and `nour_analytics/` share the same structure: replace `js/offers-data.js` with your

@@ -5,20 +5,17 @@ A student-side agent site for the Open Agentic Web Challenge. The student sets t
 PFE agent, on the company's own site, compares the answers with the needs and saves the best
 offers to a shortlist. No platform in the middle.
 
-## Run the three sites on one computer
-Each site needs its own host name, so the agents talk across sites as they would on the web.
-From the project folder, in three terminals:
-```
-python serve.py atlas_data 8081 localhost
-python serve.py nour_analytics 8082 ::1
-python serve.py pfe_match 8080 127.0.0.1
-```
-Open http://127.0.0.1:8080/, open **⚙ AI model settings** in the chat, paste your Otari key,
+## Live
+- PFE Match: https://siriusralph.github.io/pfe-match/
+- Atlas Data: https://atlas-data-pfe.netlify.app/
+- Nour Analytics: https://nour-analytics-pfe.netlify.app/
+
+Open PFE Match, open **⚙ AI model settings** in the chat, paste your LLM key (e.g. Otari),
 select **Save and start**, then press "Find PFEs that match my needs".
 
 ## Linked sites
-- `http://localhost:8081/atlas_data_pfe` (Atlas Data careers agent)
-- `http://[::1]:8082/nour_analytics_pfe` (Nour Analytics careers agent)
+- `https://atlas-data-pfe.netlify.app/atlas_data_pfe` (Atlas Data careers agent)
+- `https://nour-analytics-pfe.netlify.app/nour_analytics_pfe` (Nour Analytics careers agent)
 
 Before any contact, a card shows the company's name, host and the first 140 characters of the
 request. **Always allow** skips the card for that host until the page is reloaded. A request is
@@ -32,8 +29,8 @@ Applying happens on the company's own careers page, through its own assistant or
 `get_my_profile` (read) · `update_my_needs`, `save_to_shortlist`, `remove_from_shortlist` (write).
 Profile and shortlist stay in this browser (localStorage).
 
-## Before hosting
-Replace the two localhost URLs with the companies' https network URLs in `pfe_match.hocon`
-(`tools`, `link_labels`), in `agent-manifest.json` (`allowed_peers`) and in `js/student.js`
-(`DIRECTORY` pages), then rebuild:
+## Run locally instead
+Serve the company sites locally (see the root README) and swap the two partner URLs above for
+`http://localhost:8081/atlas_data_pfe` and `http://[::1]:8082/nour_analytics_pfe` in `pfe_match.hocon`
+(`tools`, `link_labels`), `agent-manifest.json` (`allowed_peers`) and `js/student.js` (`DIRECTORY`), then rebuild:
 `node <agentic-web>/skills/agentify-website/scripts/build_network.mjs pfe_match.hocon --manifest agent-manifest.json`

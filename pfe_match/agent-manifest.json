@@ -28,8 +28,8 @@
     "byok_router": "https://eu.api.otari.ai/api/v1"
   },
   "allowed_peers": [
-    "http://localhost:8081",
-    "http://[::1]:8082"
+    "https://atlas-data-pfe.netlify.app",
+    "https://nour-analytics-pfe.netlify.app"
   ],
   "peer_policy": {
     "mode": "closed",

@@ -27,7 +27,7 @@ export const DIRECTORY = [
     name: "Atlas Data",
     tagline: "Data & AI consultancy",
     city: "Casablanca",
-    page: "http://localhost:8081/",
+    page: "https://atlas-data-pfe.netlify.app/",
     agentTool: "atlas_data_pfe",
     deadline: "2026-12-20",
     color: "#0E9F6E"
@@ -37,7 +37,7 @@ export const DIRECTORY = [
     name: "Nour Analytics",
     tagline: "Machine learning for finance & retail",
     city: "Rabat",
-    page: "http://[::1]:8082/",
+    page: "https://nour-analytics-pfe.netlify.app/",
     agentTool: "nour_analytics_pfe",
     deadline: "2027-01-10",
     color: "#2B3A8C"
