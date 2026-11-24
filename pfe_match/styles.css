@@ -422,3 +422,20 @@ body > dialog button { margin-right: 8px; }
 #agent-app #ns-anodes { flex-wrap: nowrap; }
 #agent-app .ns-aaddr { display: none; }
 #agent-app .ns-anode { flex: none; }
+
+/* never wider than the screen: let flex/grid children shrink */
+.main, .content, .workspace > *, .agent-panel, .assistant, #agent-app, #agent-app .assistant-panels, #agent-app [data-ns-slot], #agent-app .ns-chat, #agent-app .ns-msgs { min-width: 0; max-width: 100%; }
+#agent-app .ns-agents { max-width: 100%; }
+#agent-app .ns-agents h3 { display: none; }
+#agent-app .ns-header { flex-wrap: wrap; }
+@media (max-width: 820px) {
+  .panel, .agent-panel { padding: 14px; }
+  #agent-app .ns-msgs { padding: 14px; }
+  #agent-app .ns-msg.user { max-width: 90%; }
+  #agent-app.ns-composed-app [data-ns-slot="chat"] { height: 560px; }
+  .stats { grid-template-columns: 1fr 1fr; gap: 10px; }
+  .stats strong { font-size: 20px; }
+  .rail { grid-template-columns: 1fr; }
+  .side { justify-content: space-between; }
+  .side .lbl { display: inline; }
+}
